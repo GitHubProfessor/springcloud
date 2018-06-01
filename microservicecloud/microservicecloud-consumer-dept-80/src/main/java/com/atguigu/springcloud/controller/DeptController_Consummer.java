@@ -13,7 +13,12 @@ import com.atguigu.springcloud.entity.Dept;
 @RestController
 public class DeptController_Consummer {
 
-	private static final String REST_URL_PERFIX = "http://localhost:8001";
+	//单机时的配置,不适用Ribbon时，使用此变量
+	//private static final String REST_URL_PERFIX = "http://localhost:8001";
+	
+	//add for Ribbon
+	private static final String REST_URL_PERFIX = "http://MICROSERVICECLOUD-DEPT";
+	
 	@Autowired
 	private RestTemplate restTemplate;
 	
@@ -23,7 +28,7 @@ public class DeptController_Consummer {
 		
 	}
 	
-	@RequestMapping(value="/consummer/dept/get/{id}")
+	@RequestMapping(value="/consumer/dept/get/{id}")
 	public Dept get(@PathVariable("id") Long id){
 		return restTemplate.getForObject(REST_URL_PERFIX + "/dept/get/"+id,Dept.class);
 		
