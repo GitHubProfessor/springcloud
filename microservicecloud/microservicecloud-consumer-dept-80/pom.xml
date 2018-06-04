@@ -15,6 +15,23 @@
           <version>${project.version}</version>
       </dependency>
       
+      <!-- Ribbon负载均衡需要的依赖  start-->
+      <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-eureka</artifactId>
+      </dependency>
+      
+      <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-ribbon</artifactId>
+      </dependency>
+      
+      <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-config</artifactId>
+      </dependency>
+      <!-- Ribbon负载均衡需要的依赖  end-->
+      
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-web</artifactId>
