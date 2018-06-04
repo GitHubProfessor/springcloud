@@ -1,1 +1,1 @@
-service��ʓI���L�ڌ��C��v�p��Feign
+service包下面的所有接口，主要用于Feign
