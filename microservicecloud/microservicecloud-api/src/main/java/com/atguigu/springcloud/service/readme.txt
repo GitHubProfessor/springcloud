@@ -1,0 +1,1 @@
+service包下面的所有接口，主要用于Feign
