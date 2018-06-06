@@ -8,7 +8,7 @@ Zuul主要用于网关路由，可以隐藏真实的微服务url地址，使用z
 
 Zuul要和Eureka一起使用，因为Zuul也需要作为一个微服务注册到Eureka中。
 
-此版本运行的方式：
+此版本运行的方式：\n
 1.启动3个Eureka集群
 2.启动我们微服务的提供者microservicecloud-provider-dept-8001
 3.启用专门用于网关的zuul模块工程microservicecloud-zuul-gateway-9527。
