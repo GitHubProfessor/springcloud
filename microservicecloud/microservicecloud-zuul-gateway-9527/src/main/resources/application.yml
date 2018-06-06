@@ -1,0 +1,30 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+         
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com # 用于设置在eureka管理页面中，status列中显示的服务名称名字。此处不设置，将显示默认服务名字,只要不是ip地址，就是说明需要修改host文件
+    prefer-ip-address: true                 # 访问路径可以显示IP地址（鼠标指向status列中的名字是，浏览器左下角可以显示出服务的ip地址）
+    
+#Zuul路径映射。隐藏真正的路径，对外暴露其他样子的url。不加这个也行，那就需要使用zuul默认的访问路径（http://host文件中的域名：端口/eureka中使用的服务名/请求部分路径）
+zuul:
+  prefix: /atguigu    #统一公共前缀。
+  #ignored-services: "*"  如果用*，那么将禁用所有微服务原url
+  ignored-services: microservicecloud-dept  #禁用原始url，通过http://myzuul.com:9527/microservicecloud-dept/dept/get/1将不能在访问导数据。
+  routes: 
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+    
+#eureka管理页面，status列中服务名，点开后，连接地址info url对应的页面显示配置。此处配置的内容，都会在info页面中显示。这样就不会在显示404了    
+info: 
+  app.name: atguigu-microservicecloud
+  company.name: www.aiguigu.com
+  build.artifactId: $project.artifactId$  #父工程的pom文件中的plugin插件配置的$
+  build.version: $project.version$        #父工程的pom文件中的plugin插件配置的$
